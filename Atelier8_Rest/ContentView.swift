@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    init(){
+        DataService.shared.fetchGists{(result) in
+            switch result {
+            case .success(let json): print(json)
+            case .failure(let error): print(error)
+            }
+        }
+    }
     var body: some View {
         VStack {
             Image(systemName: "globe")
